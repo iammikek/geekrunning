@@ -1,0 +1,42 @@
+@import "../../node_modules/bulma/bulma.sass";
+
+#root {
+  width: 100%;
+}
+
+.App {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  header.App-header {
+    background-color: #222;
+    padding: 10px;
+    color: white;
+
+    .App-title {
+      font-size: 1.5rem;
+    }
+
+    .container {
+      padding: 20px;
+
+      div {
+        padding: 20px;
+      }
+
+    }
+
+  }
+  footer {
+    text-align: center;
+    font-family: 'Gafata', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-bottom: 5px;
+  }
+}
