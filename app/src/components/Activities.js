@@ -5,7 +5,6 @@ import Activity from './Activity';
 
 class Activities extends Component {
 
-
     renderActivities() {
         return this.props.activities.map(activity => {
             return (

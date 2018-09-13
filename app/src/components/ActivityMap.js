@@ -57,6 +57,7 @@ class ActivityMap extends Component {
                     className='marker'
                     coordinates={coordinates}
                     anchor="bottom"
+                    offset={[0,10]}
                     onClick={() => this.actionOpenPopUp(activity)}
                 >
 

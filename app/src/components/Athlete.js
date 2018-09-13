@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 
 //import PropTypes from 'prop-types';
 
+import ChartBlock from './ChartBlock';
+
 class Athlete extends Component {
 
     constructor() {
         super();
         this.state = {
-            'name': ''
+            'name': '',
+            'shoes': [],
+            'bikes': [],
         }
     }
 
@@ -33,8 +37,23 @@ class Athlete extends Component {
         return '<img class="is-rounded" src="' + this.props.athlete.profile + '" alt="' + this.props.athlete.firstname + ' ' + this.props.athlete.lastname + '" />';
     }
 
+
     render() {
 
+        let shoes = {};
+        let bikes = {};
+
+        if (this.props.athlete !== null) {
+            shoes = this.props.athlete.shoes;
+            bikes = this.props.athlete.bikes;
+        }
+        //                                  <ChartBlock data={bikes} label='Bikes' />
+
+        /*
+        <div className="media-right">
+            <ChartBlock data={shoes} label='Shoes' />
+        </div>
+*/
         return (
             <div id="Athlete">
                 <div className="card">

@@ -14,24 +14,27 @@ class StravaApp extends Component {
             athleteId: process.env.REACT_APP_STRAVA_ATHLETE_ID,
             clubId: process.env.REACT_APP_STRAVA_CLUB_ID,
             token: process.env.REACT_APP_STRAVA_TOKEN,
+            page: 1,
+            perPage: 50,
             activities: [],
-            athlete: {}
+            athlete: {},
+            stats: {}
         }
     }
-
 
     // load Activities info
 
     getActivities() {
         strava.athlete.listActivities({
             'access_token': this.state.token,
-            'id': this.state.athleteId
+            'id': this.state.athleteId,
+            'page': this.state.page, // {Integer} Page number.
+            'perPage': this.state.perPage // {Integer} Number of items per page. Defaults to 30.
         }, (err, payload, limits) => {
             //do something with your payload, track rate limits
             this.setState({'activities': payload});
 
-            console.log(payload);
-
+           // console.log(payload);
         })
     }
 
@@ -40,7 +43,9 @@ class StravaApp extends Component {
 
         strava.athlete.get({
             'access_token': this.state.token,
-            'id': this.state.athleteId
+            'id': this.state.athleteId,
+            'page': this.state.page, // {Integer} Page number.
+            'perPage': this.state.perPage // {Integer} Number of items per page. Defaults to 30.
         }, (err, payload, limits) => {
             //do something with your payload, track rate limits
             this.setState({'athlete': payload});
@@ -48,6 +53,7 @@ class StravaApp extends Component {
             console.log(payload);
         })
     }
+
 
     //
     componentDidMount() {
@@ -59,7 +65,7 @@ class StravaApp extends Component {
     render() {
         return (
             <div id="StravaApp">
-                <Athlete athlete={this.state.athlete}></Athlete>
+                <Athlete athlete={this.state.athlete} stats={this.state.stats}></Athlete>
                 <ActivityMap activities={this.state.activities}></ActivityMap>
                 <Activities activities={this.state.activities}></Activities>
             </div>

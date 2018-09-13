@@ -3,18 +3,19 @@
 
 .marker {
   padding: 0 0 0 0;
-  margin-top: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
   opacity: .5;
   background-color: gray;
   border: 1px solid black; }
 
 .mapboxgl-popup .title {
-  font-size: 1rem; }
+  font-size: .9rem; }
 .mapboxgl-popup .subtitle {
-  font-size: .8rem;
+  font-size: .7rem;
   margin-bottom: 0; }
+.mapboxgl-popup p {
+  font-size: .7rem; }
 
 /*# sourceMappingURL=Activity.css.map */
