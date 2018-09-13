@@ -1,6 +1,20 @@
-.activities {
-  width: 100%; }
-  .activities .activity {
-    padding: 20px; }
+.activities .card {
+  display: block; }
+
+.marker {
+  padding: 0 0 0 0;
+  margin-top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  opacity: .5;
+  background-color: gray;
+  border: 1px solid black; }
+
+.mapboxgl-popup .title {
+  font-size: 1rem; }
+.mapboxgl-popup .subtitle {
+  font-size: .8rem;
+  margin-bottom: 0; }
 
 /*# sourceMappingURL=Activity.css.map */

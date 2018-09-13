@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 
-import Strava from './Strava';
+import StravaApp from './StravaApp';
 
 
 class App extends Component {
@@ -12,10 +12,10 @@ class App extends Component {
           <h1 className="App-title">Geek Running</h1>
         </header>
           <div className="container">
-          <Strava></Strava>
+          <StravaApp></StravaApp>
           </div>
           <footer>
-              an <a href="https://automica.io">automica.io</a> product
+              an <a href="https://automica.io">automica.io</a> project
           </footer>
       </div>
     );

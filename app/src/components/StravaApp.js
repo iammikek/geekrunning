@@ -1,47 +1,72 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react'
+//import PropTypes from 'prop-types'
 
-import Activities from './Activities';
-import Athlete from './Athlete';
+import Activities from './Activities'
+import ActivityMap from './ActivityMap'
+import Athlete from './Athlete'
+import strava from 'strava-v3'
 
-
-class Strava extends Component {
+class StravaApp extends Component {
 
     constructor() {
         super();
         this.state = {
-            athleteId: 4133009,
-            clubId: 13237,
-            activities: [
-                {id: 1, name: 'Activity 1'},
-                {id: 2, name: 'Activity 2'},
-                {id: 3, name: 'Activity 1'},
-                {id: 4, name: 'Activity 2'},
-            ]
+            athleteId: process.env.REACT_APP_STRAVA_ATHLETE_ID,
+            clubId: process.env.REACT_APP_STRAVA_CLUB_ID,
+            token: process.env.REACT_APP_STRAVA_TOKEN,
+            activities: [],
+            athlete: {}
         }
     }
 
 
     // load Activities info
 
+    getActivities() {
+        strava.athlete.listActivities({
+            'access_token': this.state.token,
+            'id': this.state.athleteId
+        }, (err, payload, limits) => {
+            //do something with your payload, track rate limits
+            this.setState({'activities': payload});
 
-    //
+            console.log(payload);
 
-    componentDidMount() {
-
+        })
     }
 
+    // load Athlete info
+    getAthlete() {
+
+        strava.athlete.get({
+            'access_token': this.state.token,
+            'id': this.state.athleteId
+        }, (err, payload, limits) => {
+            //do something with your payload, track rate limits
+            this.setState({'athlete': payload});
+
+            console.log(payload);
+        })
+    }
+
+    //
+    componentDidMount() {
+        this.getAthlete();
+        this.getActivities();
+    }
+
+    //
     render() {
         return (
-            <div>
-                Hello Strava Component
-                <Athlete></Athlete>
+            <div id="StravaApp">
+                <Athlete athlete={this.state.athlete}></Athlete>
+                <ActivityMap activities={this.state.activities}></ActivityMap>
                 <Activities activities={this.state.activities}></Activities>
             </div>
         );
     }
 }
 
-Strava.propTypes = {};
+//StravaApp.propTypes = {};
 
-export default Strava;
+export default StravaApp;
