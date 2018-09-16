@@ -6,8 +6,8 @@ import ChartBlock from './ChartBlock';
 
 class Athlete extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             'name': '',
             'shoes': [],

@@ -6,13 +6,13 @@ import '../css/Activity.css';
 
 class Activity extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {}
     }
 
     getLink() {
-        return 'View on <a href="https://www.strava.com/activities/' + this.props.activity.id + '">Strava</a>';
+        return 'View on <a href="https://www.strava.com/activities/' + this.props.activity.id + '"> Strava</a>';
     }
 
     paceToKM() {

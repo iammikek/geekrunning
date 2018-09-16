@@ -22,8 +22,8 @@ const data = {
 
 class ChartBlock extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             data: [],
             labels:[]

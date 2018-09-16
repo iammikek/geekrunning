@@ -17,9 +17,9 @@ class Activities extends Component {
     render() {
         return (
             <div id="activities">
-            <div className="columns is-mobile activities is-multiline">
-                {this.renderActivities()}
-            </div>
+                <div className="columns is-mobile activities is-multiline">
+                    {this.renderActivities()}
+                </div>
                 <div className="pager">
 
                 </div>

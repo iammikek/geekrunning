@@ -8,8 +8,8 @@ import strava from 'strava-v3'
 
 class StravaApp extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             athleteId: process.env.REACT_APP_STRAVA_ATHLETE_ID,
             clubId: process.env.REACT_APP_STRAVA_CLUB_ID,
@@ -18,8 +18,12 @@ class StravaApp extends Component {
             perPage: 50,
             activities: [],
             athlete: {},
-            stats: {}
-        }
+            stats: {},
+            mapCenter: {},
+        };
+
+        // Bind the this context to the handler function
+        this.getActivityRoute = this.getActivityRoute.bind(this);
     }
 
     // load Activities info
@@ -54,6 +58,10 @@ class StravaApp extends Component {
         })
     }
 
+    getActivityRoute = () => {
+        console.log('get activity route');
+
+    };
 
     //
     componentDidMount() {
@@ -66,7 +74,10 @@ class StravaApp extends Component {
         return (
             <div id="StravaApp">
                 <Athlete athlete={this.state.athlete} stats={this.state.stats}></Athlete>
-                <ActivityMap activities={this.state.activities}></ActivityMap>
+                <ActivityMap
+                    activities={this.state.activities}
+                    actionGetActivityRoute={this.getActivityRoute}
+                ></ActivityMap>
                 <Activities activities={this.state.activities}></Activities>
             </div>
         );
